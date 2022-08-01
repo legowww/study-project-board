@@ -1,0 +1,2 @@
+insert into article (id, title, content, hashtag, created_by, modified_by, created_at, modified_at) value (2, 'Quisque ut erat.', 'Vestibulum quamsequat dui nec nisi volutpat eleifenassa iro.', '#pink', 'Kamilah', 'Murial', '2021-05-30 23:53:46', '2021-03-10 08:48:50')
+insert into article (id, title, content, hashtag, created_by, modified_by, created_at, modified_at) value (3, 'Quisque ut erat.', 'Vestibulum quamsequat dui nec nisi volutpat eleifenassa iro.', '#pink', 'Kamilah', 'Murial', '2021-05-30 23:53:46', '2021-03-10 08:48:50')

@@ -37,7 +37,7 @@ public class Article extends AuditingFields {
     @ToString.Exclude //순환 참조 방지, ArticleComment 에서 ToString 이 article 필드를 보고 현재 클래스 이동. Exclude 보고 재참조 안함.
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    private final Set<ArticleComment> articleCommentSet = new LinkedHashSet<>();
+    private final Set<ArticleComment> articleComment = new LinkedHashSet<>();
 
     //private 로 막아버리고 팩터리 메서드 방식 사용
     private Article(String title, String content, String hashtag) {
