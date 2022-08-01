@@ -22,11 +22,9 @@ import java.util.Set;
         @Index(columnList = "createdBy")
 }) //빠르게 서칭하기 위한 인덱싱 설정
 @NoArgsConstructor(access = AccessLevel.PROTECTED) //하이버네이트 구현체만 접근
-@EntityListeners(AuditingEntityListener.class) //Auditing 을 사용할 것이다.
 @Entity
-public class Article {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //MySql 방식
+public class Article extends AuditingFields {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) //MySql 방식
     private Long id;
 
     //not null
@@ -40,12 +38,6 @@ public class Article {
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleCommentSet = new LinkedHashSet<>();
-
-    //메타데이터
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; //생성일시
-    @CreatedBy @Column(nullable = false, length = 100) private String createdBy; //생성자, 현재 기본값 defaultName
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt; //수정일시
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy; //수정자
 
     //private 로 막아버리고 팩터리 메서드 방식 사용
     private Article(String title, String content, String hashtag) {
